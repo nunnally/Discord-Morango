@@ -1,0 +1,3 @@
+f5c87fd1dcaa816c3eeb7594823f0eefb35e16d371ebabf1ee5407ec23f5e355  discord-golive-macos-amd64
+507df3e359423cfae41e7939f554a986e5d1dbc9584a89e41982119df3252db3  discord-golive-macos-arm64
+0f767af67a91156a7a90a5b7ea6b5c5665860708518f6323980950aa9dd4dcca  discord-golive-windows-amd64.exe
