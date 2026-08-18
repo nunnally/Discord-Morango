@@ -672,7 +672,7 @@ func closeDiscord() {
 		_ = exec.Command("pkill", "-x", "Discord").Run()
 		_ = exec.Command("pkill", "-f", "Discord Helper").Run()
 	} else if runtime.GOOS == "windows" {
-		_ = exec.Command("taskkill", "/IM", "Discord.exe", "/F", "/T").Run()
+		_ = runHiddenCommand("taskkill", "/IM", "Discord.exe", "/F", "/T")
 	}
 	time.Sleep(1200 * time.Millisecond)
 }

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"os"
 	"strings"
 	"testing"
 	"time"
@@ -196,5 +197,19 @@ func TestWSClientHandshakeAndTextFrame(t *testing.T) {
 	}
 	if err := <-done; err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestWindowsProcessProbeDoesNotSpawnConsoleUtilities(t *testing.T) {
+	data, err := os.ReadFile("proc_windows.go")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := string(data)
+	if strings.Contains(s, `exec.Command("tasklist"`) {
+		t.Fatal("Windows processAlive must not spawn tasklist.exe; it causes visible console flashes from the detached relay")
+	}
+	if strings.Contains(s, `exec.Command("taskkill"`) {
+		t.Fatal("Windows process termination must not spawn taskkill.exe from the relay")
 	}
 }

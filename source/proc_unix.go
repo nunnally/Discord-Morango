@@ -26,3 +26,7 @@ func terminateProcess(pid int) {
 		_ = p.Signal(syscall.SIGTERM)
 	}
 }
+
+func runHiddenCommand(name string, args ...string) error {
+	return exec.Command(name, args...).Run()
+}
